@@ -20,8 +20,9 @@ const bookSchema = new Schema ({
         required: true
     },
 
-    available: {
-        type: Boolean,
+    no_of_copies: {
+        type: Number,
+        required:true
     }
     
 });

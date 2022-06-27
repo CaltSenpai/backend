@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose=require('mongoose');
 const bookrouter = require("./routes/book-routes");
 const userrouter = require("./routes/user-routes");
+const transactionrouter = require("./routes/transaction-routes");
 const cors = require('cors');
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/books",bookrouter);
 app.use("/users",userrouter);
+app.use("/transactions",transactionrouter);
 
 
 mongoose.connect("mongodb+srv://admin:admin123@cluster0.f3btq.mongodb.net/library?retryWrites=true&w=majority"

@@ -2,23 +2,24 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema ({
-    isbn:{
+const transactionSchema = new Schema ({
+    isbn: {
         type: String,
         required: true
     },
-    name: {
+    pid: {
         type: String,
         required: true
     },
     date: {
-        type: String,
-        required: true
+            type: String,
+            required: true
     },
     type: {
         type: String,
         required: true
     }
+    
 });
 
 

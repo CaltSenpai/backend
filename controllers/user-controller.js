@@ -29,10 +29,11 @@ const getUserById = async (req, res, next) => {
 };
 
 const addUser = async (req, res, next) => {
-    const{name, designation, phoneno} = req.body;
+    const{pid, name, designation, phoneno} = req.body;
     let user;
     try {
         user = new User({
+            pid,
             name,
             designation,
             phoneno
@@ -49,10 +50,11 @@ const addUser = async (req, res, next) => {
 
 const updateUser = async(req, res,next) => {
     const id = req.params.id;
-    const{name, designation, phoneno} = req.body;
+    const{pid, name, designation, phoneno} = req.body;
     let user;
     try {
         user = await User.findByIdAndUpdate(id, {
+            pid,
             name,
             designation,
             phoneno
