@@ -37,5 +37,34 @@ const getAllTransactions = async(req, res ,next) => {
      return res.status(200).json({transaction});
 };
 
+const checkIn = async(req, res,next) => {
+    const id = req.params.id;
+    let book;
+    console.log("ithinakath keriyo?")
+    
+    try {
+        if(req.body.type == "Check-In"){
+            book = await Book.findByIdAndUpdate(id, {
+                $inc:{ 
+                    no_of_copies:1
+                }
+            });
+            book = await book.save()
+        }
+
+        
+        
+    } catch(err) {
+        console.log(err);
+    }
+    if (!book) {
+        return res.status(404).json({message:'Unable to update by this id'});
+    }
+    return res.status(201).json({book});
+
+};
+
+
 exports.insertTransaction = insertTransaction;
 exports.getAllTransactions = getAllTransactions;
+exports.checkIn = checkIn;
